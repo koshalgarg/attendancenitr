@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView app:cardCornerRadius="3dp"
+    app:cardElevation="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginBottom="10dp"
+    android:id="@+id/search_card"
+    android:layout_marginRight="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="6dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_weight="8"
+            android:layout_height="wrap_content"
+            android:id="@+id/cname"
+            android:textSize="26sp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
+            android:text="hello"
+
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:id="@+id/cid"
+            android:gravity="right"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
+            android:textSize="26sp"
+            android:text="hello"
+            />
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fname"
+        android:textColor="#000"
+        android:textSize="23sp"
+        android:layout_marginBottom="10dp"
+        android:text="hello"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/sem"
+
+            android:textColor="#000"
+            android:textSize="22sp"
+            android:layout_marginBottom="10dp"
+            android:text="hello"
+            />
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/dept"
+
+            android:textColor="#000"
+            android:gravity="right"
+            android:textSize="22sp"
+            android:layout_marginBottom="10dp"
+            android:text="hello"
+            />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
+</android.support.v7.widget.CardView>

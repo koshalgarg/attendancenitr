@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">atttendance</string>
+    <!--
+    <string name="url">https://mywebsitenitr.000webhostapp.com/attendance/</string>
+-->
+    <string name="url">http://192.168.43.89/attendance/</string>
+</resources>

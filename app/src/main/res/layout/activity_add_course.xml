@@ -35,6 +35,8 @@
             android:layout_height="wrap_content"
             android:hint="Course Name"
             android:id="@+id/cname"
+            android:maxLines="1"
+            android:singleLine="true"
             />
     </android.support.design.widget.TextInputLayout>
 
@@ -52,6 +54,8 @@
             android:layout_height="wrap_content"
             android:hint="Course ID"
             android:id="@+id/course_id"
+            android:maxLines="1"
+            android:singleLine="true"
             />
     </android.support.design.widget.TextInputLayout>
 
@@ -67,6 +71,8 @@
             android:layout_height="wrap_content"
             android:hint="Semester"
             android:inputType="number"
+            android:maxLines="1"
+            android:singleLine="true"
             android:id="@+id/semester"
             />
     </android.support.design.widget.TextInputLayout>
@@ -84,6 +90,8 @@
             android:layout_height="wrap_content"
             android:hint="Department"
             android:id="@+id/dept"
+            android:maxLines="1"
+            android:singleLine="true"
             />
     </android.support.design.widget.TextInputLayout>
 

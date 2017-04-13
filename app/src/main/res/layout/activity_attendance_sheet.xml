@@ -5,12 +5,17 @@
     android:background="@color/bgcolor"
 
     android:layout_width="match_parent"
-    android:padding="16dp"
+
     android:layout_height="match_parent"
 
     android:orientation="vertical"
     tools:context="com.example.koshal.atttendance.AttendanceSheetActivity">
-
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:id="@+id/toolbar"
+        android:background="@color/colorPrimary"
+      />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">

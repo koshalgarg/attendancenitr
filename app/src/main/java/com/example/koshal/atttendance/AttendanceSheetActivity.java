@@ -3,8 +3,10 @@ package com.example.koshal.atttendance;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -40,6 +42,11 @@ public class AttendanceSheetActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendance_sheet);
+
+        Toolbar tb= (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(tb);
+        getSupportActionBar().setTitle("Attendance Sheet");
+        tb.setTitleTextColor(Color.WHITE);
         Intent i=getIntent();
         c_id=i.getStringExtra("c_id");
         dates=new HashMap<>();
@@ -172,7 +179,23 @@ public class AttendanceSheetActivity extends AppCompatActivity {
 
                 final int q=j;
                 final TextView d=getTV();
-                d.setText(arr[i][j]+"");
+
+                if(arr[i][j]==1)
+                {
+                    d.setText("P");
+                    v.setTextColor(getResources().getColor(R.color.deepgreen));
+
+
+                }
+                else
+                {
+                    d.setText("A");
+
+                    d.setTextColor(Color.RED);
+
+
+                }
+
                 r.addView(d);
                 d.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
@@ -227,7 +250,18 @@ public class AttendanceSheetActivity extends AppCompatActivity {
                         {
                             int k=(arr[p][q]+1)%2;
                             arr[p][q]=k;
-                            d.setText(k+"");
+
+                            if(arr[p][q]==1)
+                            {
+                                d.setText("P");
+                                d.setTextColor(getResources().getColor(R.color.deepgreen));
+                            }
+                            else
+                            {
+                                d.setText("A");
+                                d.setTextColor(Color.RED);
+                            }
+
                         }
                         else {
                             Toast.makeText(AttendanceSheetActivity.this, "Failed", Toast.LENGTH_SHORT).show();

@@ -8,4 +8,6 @@
     <color name="green">#ABC</color>
     <color name="red">#FF4081</color>
     <color name="bgcolor">#EEEEEE</color>
+    <color name="deepgreen">#0a3913</color>
+
 </resources>

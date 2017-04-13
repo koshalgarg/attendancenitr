@@ -176,8 +176,6 @@ public class MainActivity_Student extends AppCompatActivity {
                                 a.setTotal_classes(obj.getString("total"));
                                 a.setId(Integer.parseInt(obj.getString("id")));
 
-
-
                                 search_courses.add(a);
                                 runOnUiThread(new Runnable() {
                                     @Override

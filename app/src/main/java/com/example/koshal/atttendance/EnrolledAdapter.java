@@ -63,8 +63,17 @@ public class EnrolledAdapter extends RecyclerView.Adapter<EnrolledAdapter.Recycl
         holder.cname.setText(courses.get(position).getC_name());
         holder.cid.setText(courses.get(position).getC_id());
         holder.fname.setText(courses.get(position).getF_name());
-        holder.tc.setText(courses.get(position).getTotal_classes());
-        holder.pc.setText(courses.get(position).getPresent_classes());
+        holder.tc.setText("Total: "+courses.get(position).getTotal_classes());
+        holder.pc.setText("Present: "+courses.get(position).getPresent_classes());
+
+        int p= Integer.parseInt(courses.get(position).total_classes);
+        int t= Integer.parseInt(courses.get(position).present_classes);
+
+        float per= (float) ((t*1.0/p)*100.0);
+        int pa=(int)per;
+
+        holder.percent.setText("Percentage: "+pa);
+
 
     }
 
@@ -77,7 +86,7 @@ public class EnrolledAdapter extends RecyclerView.Adapter<EnrolledAdapter.Recycl
 
     public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView cname, cid, fname, sem, dept,tc,pc;
+        public TextView cname, cid, fname, sem, dept,tc,pc,percent;
 
         CardView cv;
         public TextView Course_id;
@@ -90,6 +99,8 @@ public class EnrolledAdapter extends RecyclerView.Adapter<EnrolledAdapter.Recycl
             fname = (TextView) itemView.findViewById(R.id.fname);
             tc = (TextView) itemView.findViewById(R.id.total_classes);
             pc = (TextView) itemView.findViewById(R.id.present_classes);
+            percent=(TextView) itemView.findViewById(R.id.percent);
+
 
 
             cv.setOnClickListener(this);

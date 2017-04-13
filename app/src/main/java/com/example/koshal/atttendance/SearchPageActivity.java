@@ -1,5 +1,6 @@
 package com.example.koshal.atttendance;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -32,10 +35,12 @@ public class SearchPageActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     LinearLayoutManager llayout;
     SearchAdapter rcAdapter;
+    LinearLayout ll;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_page);
+        ll= (LinearLayout) findViewById(R.id.activity_search_page);
         Toolbar tb= (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(tb);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -46,6 +51,12 @@ public class SearchPageActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 fetch_data(query);
+
+                View view = SearchPageActivity.this.getCurrentFocus();
+                if (view != null) {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                }
                 return true;
             }
 
@@ -121,7 +132,8 @@ public class SearchPageActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(final VolleyError error) {
-                Toast.makeText(SearchPageActivity.this, "ERROR in connection", Toast.LENGTH_SHORT).show();
+               Toast.makeText(SearchPageActivity.this, error.toString() ,Toast.LENGTH_SHORT).show();
+                Log.i("error", error.toString());
             }
 
         }) {

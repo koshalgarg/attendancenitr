@@ -163,8 +163,8 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Number"
-                android:inputType="number"
+                android:hint="roll Number"
+
                 android:id="@+id/et_signup_phone"
                 />
             </android.support.design.widget.TextInputLayout>

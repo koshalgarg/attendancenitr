@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,7 +45,8 @@ public class TakeAttendanceActivity extends AppCompatActivity {
     boolean boolstart;
     String course_name,course_id;
     TextView tv_date,tv_name,tv_abs,tv_num;
-    Button btn_start,btn_yes,btn_no,btn_submit,btn_prev,btn_netx;
+    Button btn_start,btn_yes,btn_no,btn_submit;
+    ImageView btn_prev,btn_netx;
 
     ArrayList<Students> studentsArrayList;
     LinearLayout ll_details;
@@ -81,8 +83,8 @@ public class TakeAttendanceActivity extends AppCompatActivity {
         btn_no=(Button) findViewById(R.id.btn_no);
         btn_yes=(Button) findViewById(R.id.btn_yes);
         btn_submit=(Button) findViewById(R.id.btn_submit);
-        btn_prev=(Button) findViewById(R.id.btn_prev);
-        btn_netx=(Button) findViewById(R.id.btn_next);
+        btn_prev=(ImageView) findViewById(R.id.btn_prev);
+        btn_netx=(ImageView) findViewById(R.id.btn_next);
         tv_num= (TextView) findViewById(R.id.tv_number);
 
 
@@ -335,7 +337,7 @@ public class TakeAttendanceActivity extends AppCompatActivity {
                 }
         tv_num.setText((cur_stud+1)+"/"+size);
         tv_name.setText(studentsArrayList.get(cur_stud).getS_name()+"\n"+studentsArrayList.get(cur_stud).getS_roll());
-        tv_abs.setText(studentsArrayList.get(cur_stud).getAbsent()+"");
+        tv_abs.setText("Absents "+studentsArrayList.get(cur_stud).getAbsent()+"");
     }
 }
 

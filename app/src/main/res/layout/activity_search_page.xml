@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:background="@color/bgcolor"
     android:layout_height="match_parent"
+
      android:orientation="vertical"
     tools:context="com.example.koshal.atttendance.SearchPageActivity">
     <android.support.v7.widget.Toolbar

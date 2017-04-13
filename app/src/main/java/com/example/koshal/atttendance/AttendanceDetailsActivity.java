@@ -1,8 +1,10 @@
 package com.example.koshal.atttendance;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.widget.TableLayout;
@@ -29,7 +31,7 @@ public class AttendanceDetailsActivity extends AppCompatActivity {
     TextView tv_s_name,tv_c_name,tv_c_id,tv_total, tv_present,tv_per;
     TableLayout sheet;
     int total;
-    int absent;
+    int presentcnt;
     double per;
 
 
@@ -37,10 +39,13 @@ public class AttendanceDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendance_details);
-
+        Toolbar tb= (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(tb);
+        getSupportActionBar().setTitle("Attendance Details");
+        tb.setTitleTextColor(Color.WHITE);
         init();
 
-        Toast.makeText(this, c_name+c_id+s_id+id, Toast.LENGTH_SHORT).show();
+     //   Toast.makeText(this, c_name+c_id+s_id+id, Toast.LENGTH_SHORT).show();
     }
 
     private void init() {
@@ -63,7 +68,8 @@ public class AttendanceDetailsActivity extends AppCompatActivity {
         tv_c_name.setText(c_name);
         tv_s_name.setText(s_id);
 
-        total=0;absent=0;
+        total=0;
+        presentcnt =0;
 
         sheet= (TableLayout) findViewById(R.id.tl_sheet);
 
@@ -87,7 +93,7 @@ public class AttendanceDetailsActivity extends AppCompatActivity {
 
     private void fetchData() {
         String url=getResources().getString(R.string.url)+"sheet_student_course.php";
-        Toast.makeText(this, url, Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(this, url, Toast.LENGTH_SHORT).show();
         Log.i("logurl",url);
         final Map<String,String> m =new HashMap<String, String>();
         m.put("s_id",s_id);
@@ -98,7 +104,7 @@ public class AttendanceDetailsActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
 
-                        Toast.makeText(AttendanceDetailsActivity.this, response, Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(AttendanceDetailsActivity.this, response, Toast.LENGTH_SHORT).show();
                         Log.i("log_login_response",response);
 
                         showData(response);
@@ -132,13 +138,24 @@ public class AttendanceDetailsActivity extends AppCompatActivity {
             {
                 JSONObject obj=arr.getJSONObject(i);
                 TableRow t=new TableRow(this);
+
                 TextView v=getTV();
                 v.setText(obj.getString("date"));
                 t.addView(v);
                 v=getTV();
-                v.setText(obj.getString("status"));
-                if(v.getText().toString().equals("1"))
-                    absent++;
+
+                if(obj.getString("status").equals("1"))
+                {
+
+                    presentcnt++;
+                    v.setText("P");
+                    v.setTextColor(getResources().getColor(R.color.deepgreen));
+                }
+                else {
+                    v.setText("A");
+                    v.setTextColor(Color.RED);
+
+                }
                 t.addView(v);
                 sheet.addView(t);
             }
@@ -148,11 +165,9 @@ public class AttendanceDetailsActivity extends AppCompatActivity {
         }
 
         tv_total.setText(total+"");
-        tv_present.setText(absent+"");
-        per=((absent*1.0)*100)/total;
-        tv_per.setText(per+"%");
-
-
+        tv_present.setText(presentcnt +"");
+        per=((presentcnt *1.0)*100)/total;
+        tv_per.setText((int)per+"%");
     }
 
     TextView getTV()

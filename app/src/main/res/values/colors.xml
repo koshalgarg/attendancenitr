@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#689F38</color>
+    <!--<color name="colorPrimary">#689F38</color>
     <color name="colorPrimaryDark">#537F2D</color>
     <color name="colorAccent">#689F38</color>
+    -->
+
+    <color name="colorPrimary">#3B5998</color>
+    <color name="colorPrimaryDark">#3B5998</color>
+    <color name="colorAccent">#3B5998</color>
+
     <color name="btnbg">#FFFFFF</color>
     <color name="btntextcolor">#000</color>
     <color name="green">#ABC</color>
     <color name="red">#FF4081</color>
     <color name="bgcolor">#EEEEEE</color>
     <color name="deepgreen">#0a3913</color>
+
+    <color name="gray">#f2f2f2</color>
 
 </resources>

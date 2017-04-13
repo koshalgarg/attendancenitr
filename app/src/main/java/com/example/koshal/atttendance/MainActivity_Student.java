@@ -26,6 +26,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -56,6 +57,7 @@ public class MainActivity_Student extends AppCompatActivity {
     LinearLayout ll;
     FloatingActionButton fab;
     TextInputLayout tx;
+    ProgressBar pb;
 
     @Override
 
@@ -76,6 +78,7 @@ public class MainActivity_Student extends AppCompatActivity {
 
             }
         });
+        pb= (ProgressBar) findViewById(R.id.progressBar);
         search_courses=new ArrayList<>();
         rv_func();
         SharedPreferences sp1=SplashScreen.sp;
@@ -150,7 +153,10 @@ public class MainActivity_Student extends AppCompatActivity {
 
     private void fetch_data(String query) {
 
+
+        pb.setVisibility(View.VISIBLE);
         search_courses.clear();
+        rcAdapter.notifyDataSetChanged();
         String url=getResources().getString(R.string.url)+"student_enrolled_courses.php";
         final Map<String,String> m =new HashMap<String, String>();
         m.put("s_id",query);
@@ -162,6 +168,9 @@ public class MainActivity_Student extends AppCompatActivity {
                     @Override
 
                     public void onResponse(String response) {
+
+
+                        pb.setVisibility(View.GONE);
 
                         Log.i("log_signup_response",response);
                         try {
@@ -187,6 +196,9 @@ public class MainActivity_Student extends AppCompatActivity {
                             }
 
                         } catch (Exception e) {
+
+                            pb.setVisibility(View.GONE);
+
                             Log.i("dibya",e.toString());
                         }
 
@@ -195,6 +207,9 @@ public class MainActivity_Student extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(final VolleyError error) {
+
+
+                pb.setVisibility(View.GONE);
 
                 Snackbar snackbar = Snackbar.make(fab, "Error in connection" , Snackbar.LENGTH_LONG);
 

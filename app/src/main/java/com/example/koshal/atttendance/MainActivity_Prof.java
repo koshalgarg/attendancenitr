@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -39,6 +40,7 @@ public class MainActivity_Prof extends AppCompatActivity {
     FloatingActionButton fab;
     int requestcode=1;
 
+    ProgressBar pb;
     public static String prof_email,prof_name,prof_contact_no,prof_id;
 
     @Override
@@ -48,6 +50,7 @@ public class MainActivity_Prof extends AppCompatActivity {
 
         Toolbar tb= (Toolbar) findViewById(R.id.tb);
         setSupportActionBar(tb);
+        pb= (ProgressBar) findViewById(R.id.progressBar);
 
 
         SharedPreferences sp=SplashScreen.sp;
@@ -136,6 +139,8 @@ public class MainActivity_Prof extends AppCompatActivity {
 
     private void setData() {
 
+pb.setVisibility(View.VISIBLE);
+
         String url=getResources().getString(R.string.url)+"prof_fetch_courses.php";
         final Map<String,String> m =new HashMap<String, String>();
         m.put("p_id",prof_id);
@@ -147,6 +152,9 @@ public class MainActivity_Prof extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         courses.clear();
+
+                        pb.setVisibility(View.GONE);
+
                         Log.i("log_prof_courses",response);
                         try {
                             JSONArray arr=new JSONArray(response);
@@ -168,6 +176,9 @@ public class MainActivity_Prof extends AppCompatActivity {
                                 });
                             }
                         } catch (Exception e) {
+
+                            pb.setVisibility(View.GONE);
+
                             Toast.makeText(MainActivity_Prof.this, "Email already Exists", Toast.LENGTH_SHORT).show();
                         }
 
@@ -175,6 +186,9 @@ public class MainActivity_Prof extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(final VolleyError error) {
+
+                pb.setVisibility(View.GONE);
+
                 Toast.makeText(MainActivity_Prof.this, "ERROR in connection", Toast.LENGTH_SHORT).show();
             }
 

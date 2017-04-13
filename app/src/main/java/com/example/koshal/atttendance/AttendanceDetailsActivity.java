@@ -140,13 +140,28 @@ public class AttendanceDetailsActivity extends AppCompatActivity {
                 TableRow t=new TableRow(this);
 
                 TextView v=getTV();
+
+
+
                 v.setText(obj.getString("date"));
+
+                if(i%2==0)
+                {
+                    v.setBackground(getResources().getDrawable(R.drawable.graycell));
+                }
+
                 t.addView(v);
+
+
                 v=getTV();
+
+                if(i%2==0)
+                {
+                    v.setBackground(getResources().getDrawable(R.drawable.graycell));
+                }
 
                 if(obj.getString("status").equals("1"))
                 {
-
                     presentcnt++;
                     v.setText("P");
                     v.setTextColor(getResources().getColor(R.color.deepgreen));
@@ -177,6 +192,8 @@ public class AttendanceDetailsActivity extends AppCompatActivity {
         v.setGravity(Gravity.CENTER);
         v.setPadding(6,6,6,6);
         v.setHeight(150);
+        v.setPadding(8,4,8,4);
+
 
         return v;
     }

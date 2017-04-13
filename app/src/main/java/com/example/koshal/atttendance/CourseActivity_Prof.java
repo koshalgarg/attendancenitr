@@ -31,8 +31,6 @@ public class CourseActivity_Prof extends AppCompatActivity {
         c_id= Integer.parseInt(i.getStringExtra("c_id"));
         course_id=i.getStringExtra("course_id");
         course_name=i.getStringExtra("course_name");
-        Toast.makeText(this, c_id+"", Toast.LENGTH_SHORT).show();
-
         take= (TextView) findViewById(R.id.tv_take);
         sheet= (TextView) findViewById(R.id.tv_sheet);
 

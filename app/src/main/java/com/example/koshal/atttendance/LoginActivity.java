@@ -41,7 +41,7 @@ import io.codetail.animation.ViewAnimationUtils;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button login,login_go,signup,signup_go;
+    Button login_go,signup_go;
     LinearLayout login_form,signup_form;
     EditText login_email,login_pwd,su_email,su_pwd,su_pwd2,su_contact_no,su_name;
     Spinner dropdown;
@@ -87,13 +87,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         rb1 = (RadioButton) findViewById(R.id.prof);
         rb2 = (RadioButton) findViewById(R.id.stud);
         rb = (RadioGroup) findViewById(R.id.rg);
-        login = (Button) findViewById(R.id.btn_login);
-        login.setOnClickListener(this);
         login_go = (Button) findViewById(R.id.btn_login_go);
         login_go.setOnClickListener(this);
         rb_s = (RadioGroup) findViewById(R.id.rg_s);
-        signup = (Button) findViewById(R.id.btn_signup);
-        signup.setOnClickListener(this);
         signup_go = (Button) findViewById(R.id.btn_signup_go);
         signup_go.setOnClickListener(this);
 
@@ -281,20 +277,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             }
                             else if(rb.getCheckedRadioButtonId()==R.id.stud) {
                                 SplashScreen.edit.putString("profile", "Student");
-                                int cx = (login_go.getLeft() + login_go.getRight()) / 2;
-                                int cy = (login_go.getTop() + login_go.getBottom()) / 2;
-
-                                // get the final radius for the clipping circle
-                                int dx = Math.max(cx, login_go.getWidth() - cx);
-                                int dy = Math.max(cy, login_go.getHeight() - cy);
-                                float finalRadius = (float) Math.hypot(dx, dy);
-
-                                // Android native animator
-                                Animator animator =
-                                        ViewAnimationUtils.createCircularReveal(login_go, cx, cy, 0, finalRadius);
-                                animator.setInterpolator(new AccelerateDecelerateInterpolator());
-                                animator.setDuration(1500);
-                                animator.start();
 
                                 startActivity(new Intent(LoginActivity.this,PasscodeActivity.class));
                                 finish();
@@ -302,6 +284,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                             SplashScreen.edit.commit();
                         } catch (Exception e) {
+                            Log.i("err",e.toString());
                             Toast.makeText(LoginActivity.this, "Error in Login", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -329,15 +312,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         switch(view.getId())
         {
-            case R.id.btn_login:
-                login_form.setVisibility(View.VISIBLE);
-                signup_form.setVisibility(View.GONE);
-                break;
             case R.id.btn_login_go:
+
+                if(login_form.getVisibility()==View.GONE)
+                {
+                    login_form.setVisibility(View.VISIBLE);
+                    signup_form.setVisibility(View.GONE);
+                    break;
+                }
+
                 if(login_email.getText().toString().length()==0 || login_pwd.getText().toString().length()==0)
                 {
-                    //Toast.makeText(this, "Fill All the Fields", Toast.LENGTH_SHORT).show();
-                    Snackbar.make(login,"Fill all the fields",Snackbar.LENGTH_SHORT).show();
+                  //  Toast.makeText(this, "Fill All the Fields", Toast.LENGTH_SHORT).show();
+                    Snackbar.make(login_go,"Fill all the fields",Snackbar.LENGTH_SHORT).show();
                     return;
                 }
                 login();
@@ -345,12 +332,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                 break;
 
-            case R.id.btn_signup:
-                login_form.setVisibility(View.GONE);
-                signup_form.setVisibility(View.VISIBLE);
-                break;
 
             case R.id.btn_signup_go:
+
+                if(signup_form.getVisibility()==View.GONE)
+                {
+                    signup_form.setVisibility(View.VISIBLE);
+                    login_form.setVisibility(View.GONE);
+                    break;
+                }
+
+
                 if(su_name.getText().toString().length()==0 || su_email.getText().toString().length()==0 || su_contact_no.getText().toString().length()==0 || su_pwd.getText().toString().length()==0 || su_pwd2.getText().toString().length()==0  )
                 {
                     //Toast.makeText(this, "Fill All the Fields", Toast.LENGTH_SHORT).show();

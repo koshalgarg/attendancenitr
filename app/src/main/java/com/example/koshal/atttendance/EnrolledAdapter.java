@@ -42,7 +42,7 @@ public class EnrolledAdapter extends RecyclerView.Adapter<EnrolledAdapter.Recycl
 
     ArrayList<Enrolled_courses> courses;
     Context context;
-    int lastPosition = -1;
+
 
     public EnrolledAdapter(Context SearchPageActivity, ArrayList<Enrolled_courses> courses) {
         this.courses = courses;
@@ -53,7 +53,7 @@ public class EnrolledAdapter extends RecyclerView.Adapter<EnrolledAdapter.Recycl
     @Override
     public RecyclerViewHolders onCreateViewHolder(ViewGroup parent, int viewType) {
         View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.enrolled_courses_row, parent, false);
-        //layoutView.setMinimumHeight(parent.getMeasuredHeight() / 2);
+
         RecyclerViewHolders rcv = new RecyclerViewHolders(layoutView);
         return rcv;
     }
@@ -109,7 +109,7 @@ public class EnrolledAdapter extends RecyclerView.Adapter<EnrolledAdapter.Recycl
 
         @Override
         public void onClick(View view) {
-            if (view.getId() == R.id.search_card) {
+            if (view.getId() == R.id.search_card && courses.size()>0) {
 
                 onclick_card(getAdapterPosition());
             }

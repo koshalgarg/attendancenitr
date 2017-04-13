@@ -60,9 +60,6 @@ public class TakeAttendanceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_take_attendance);
-        final Toolbar tb= (Toolbar) findViewById(R.id.tb);
-        setSupportActionBar(tb);
-        setTitle(course_name);
 
         init();
     }
@@ -74,7 +71,12 @@ public class TakeAttendanceActivity extends AppCompatActivity {
         course_id=i.getStringExtra("course_id");
         
         course_name=i.getStringExtra("course_name");
-        
+        final Toolbar tb= (Toolbar) findViewById(R.id.tb);
+        setSupportActionBar(tb);
+        setTitle(course_name);
+        tb.setTitleTextColor(Color.WHITE);
+
+
         tv_date= (TextView) findViewById(R.id.tv_date);
         tv_name= (TextView) findViewById(R.id.tv_name_roll);
         tv_abs= (TextView) findViewById(R.id.tv_absent);

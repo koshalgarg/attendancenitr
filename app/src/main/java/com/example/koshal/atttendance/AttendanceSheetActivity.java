@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -37,6 +38,7 @@ public class AttendanceSheetActivity extends AppCompatActivity {
     ArrayList<String> datesarray;
     TableLayout tl_sheet;
     int arr[][];
+    ProgressBar pb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,7 @@ public class AttendanceSheetActivity extends AppCompatActivity {
         c_id=i.getStringExtra("c_id");
         dates=new HashMap<>();
         datesarray=new ArrayList<>();
-
+pb= (ProgressBar) findViewById(R.id.progressBar);
         students=new ArrayList<>();
         tl_sheet= (TableLayout) findViewById(R.id.tl_sheet);
         fetch_data();
@@ -71,6 +73,7 @@ public class AttendanceSheetActivity extends AppCompatActivity {
                     public void onResponse(String response) {
 
                         Log.i("log_login_response",response);
+                        pb.setVisibility(View.GONE);
                         setData(response);
 
                     }
@@ -157,28 +160,51 @@ public class AttendanceSheetActivity extends AppCompatActivity {
 
         for(int i=0;i<arr.length;i++)
         {
+
             TableRow r=new TableRow(this);
             TextView a=getTV();
+
+            if(i%2==0)
+            {
+                a.setBackground(getResources().getDrawable(R.drawable.graycell));
+            }
+
+
             a.setText((i+1)+"");
             r.addView(a);
-
             TextView b=getTV();
+
+            if(i%2==0)
+            {b.setBackground(getResources().getDrawable(R.drawable.graycell));
+            }
             b.setText(students.get(i).getS_name());
             r.addView(b);
-
             TextView c=getTV();
+
+
+            if(i%2==0)
+            {
+                c.setBackground(getResources().getDrawable(R.drawable.graycell));
+            }
+
+
+
+
             c.setText(students.get(i).getS_roll());
             r.addView(c);
-
             final int p=i;
-
-
 
             for(int j=0;j<arr[0].length;j++)
             {
 
                 final int q=j;
                 final TextView d=getTV();
+
+                if(i%2==0)
+                {
+                    d.setBackground(getResources().getDrawable(R.drawable.graycell));
+                }
+
 
                 if(arr[i][j]==1)
                 {
@@ -338,6 +364,7 @@ public class AttendanceSheetActivity extends AppCompatActivity {
         v.setPadding(6,6,6,6);
         v.setHeight(150);
 
+        v.setPadding(8,4,8,4);
         return v;
     }
 

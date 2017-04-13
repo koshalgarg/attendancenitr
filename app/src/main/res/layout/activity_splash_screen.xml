@@ -3,25 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_splash_screen"
     android:layout_width="match_parent"
-
+    android:background="#ffffff"
     android:layout_height="match_parent"
     android:orientation="vertical"
 >
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="ATTENDANCE"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        />
+
 
     <ImageView
         android:id="@+id/pic"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="9"
-        android:src="@drawable/attendance_hands"
+        android:src="@drawable/abc"
         />
 </LinearLayout>

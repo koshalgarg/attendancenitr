@@ -50,10 +50,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(final RecyclerViewHolders holder, final int position) {
-        holder.Course_name.setText("course name:- "+courses.get(position).getCourse_name());
-        holder.Course_id.setText("course code:- "+courses.get(position).getCourse_id());
-        holder.v.setText("department:- "+courses.get(position).getCourse_dept());
-        holder.a.setText("semester: -"+String.valueOf( courses.get(position).getCourse_sem()));
+        holder.Course_name.setText(courses.get(position).getCourse_name());
+        holder.Course_id.setText("C_ID: "+courses.get(position).getCourse_id());
+        holder.v.setText("Dept: "+courses.get(position).getCourse_dept());
+        holder.a.setText("Sem: "+String.valueOf( courses.get(position).getCourse_sem()));
     }
 
 

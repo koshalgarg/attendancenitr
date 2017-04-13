@@ -2,6 +2,7 @@
 <android.support.design.widget.CoordinatorLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/bgcolor"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <android.support.design.widget.AppBarLayout
@@ -35,6 +36,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
+        android:tint="#FFFFFF"
         android:src="@android:drawable/ic_input_add"
         />
 

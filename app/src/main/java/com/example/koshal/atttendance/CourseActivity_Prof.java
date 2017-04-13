@@ -14,7 +14,7 @@ public class CourseActivity_Prof extends AppCompatActivity {
 
     int c_id;
     String course_name,course_id;
-    TextView course,take,sheet,students;
+    TextView take,sheet,students;
 
 
     @Override
@@ -36,7 +36,7 @@ public class CourseActivity_Prof extends AppCompatActivity {
         take= (TextView) findViewById(R.id.tv_take);
         sheet= (TextView) findViewById(R.id.tv_sheet);
 
-        course= (TextView) findViewById(R.id.tv_course);
+       // course= (TextView) findViewById(R.id.tv_course);
 
         sheet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +62,7 @@ public class CourseActivity_Prof extends AppCompatActivity {
             }
         });
 
-        course.setText(course_name+"\n"+course_id);
+        //course.setText(course_name+"\n"+course_id);
 
     }
 }

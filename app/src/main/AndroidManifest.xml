@@ -23,7 +23,10 @@
         <activity android:name=".StudentsActivity" />
         <activity android:name=".TakeAttendanceActivity" />
         <activity android:name=".Password" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginActivity"
+            android:windowSoftInputMode="stateHidden"
+            >
+        </activity>
         <activity android:name=".MainActivity_Student" />
         <activity android:name=".MainActivity_Prof"
 
@@ -34,6 +37,7 @@
             android:parentActivityName=".MainActivity_Student"></activity>
         <activity android:name=".AttendanceSheetActivity" />
         <activity android:name=".AttendanceDetailsActivity"></activity>
+        <activity android:name=".PasscodeActivity"></activity>
     </application>
 
 </manifest>

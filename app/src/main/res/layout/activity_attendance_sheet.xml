@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_attendance_sheet"
+    android:background="@color/bgcolor"
+
     android:layout_width="match_parent"
     android:padding="16dp"
     android:layout_height="match_parent"

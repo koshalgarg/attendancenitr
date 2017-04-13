@@ -86,18 +86,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void initialize() {
         rb1 = (RadioButton) findViewById(R.id.prof);
         rb2 = (RadioButton) findViewById(R.id.stud);
-        rb1.setSelected(true);
-        rb_s1= (RadioButton) findViewById(R.id.prof_s);
-        rb_s2= (RadioButton) findViewById(R.id.stud_s);
-        rb_s1.setSelected(true);
         rb = (RadioGroup) findViewById(R.id.rg);
-        rb.check(R.id.prof);
         login = (Button) findViewById(R.id.btn_login);
         login.setOnClickListener(this);
         login_go = (Button) findViewById(R.id.btn_login_go);
         login_go.setOnClickListener(this);
         rb_s = (RadioGroup) findViewById(R.id.rg_s);
-        rb_s.check(R.id.prof_s);
         signup = (Button) findViewById(R.id.btn_signup);
         signup.setOnClickListener(this);
         signup_go = (Button) findViewById(R.id.btn_signup_go);
@@ -207,13 +201,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             if(rb_s.getCheckedRadioButtonId()==R.id.prof_s){
 
                                 SplashScreen.edit.putString("profile", "prof");
-                                startActivity(new Intent(LoginActivity.this,MainActivity_Prof.class));
+                                startActivity(new Intent(LoginActivity.this,PasscodeActivity.class));
                                 finish();
                             }
                             else if(rb_s.getCheckedRadioButtonId()==R.id.stud_s) {
 
                                 SplashScreen.edit.putString("profile", "Student");
-                                startActivity(new Intent(LoginActivity.this,MainActivity_Student.class));
+                                startActivity(new Intent(LoginActivity.this,PasscodeActivity.class));
                                 finish();
                             }
 
@@ -282,7 +276,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             if(rb.getCheckedRadioButtonId()==R.id.prof){
 
                                 SplashScreen.edit.putString("profile", "prof");
-                                startActivity(new Intent(LoginActivity.this,MainActivity_Prof.class));
+                                startActivity(new Intent(LoginActivity.this,PasscodeActivity.class));
                                 finish();
                             }
                             else if(rb.getCheckedRadioButtonId()==R.id.stud) {
@@ -302,7 +296,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 animator.setDuration(1500);
                                 animator.start();
 
-                                startActivity(new Intent(LoginActivity.this,MainActivity_Student.class));
+                                startActivity(new Intent(LoginActivity.this,PasscodeActivity.class));
                                 finish();
                             }
 

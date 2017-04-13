@@ -42,19 +42,14 @@ public class SplashScreen extends AppCompatActivity {
                     Intent i = new Intent(SplashScreen.this, LoginActivity.class);
                     startActivity(i);
                 }
-                else if(sp.getString("profile","").equals("Student"))
+               else
                 {
-                    Intent i = new Intent(SplashScreen.this, MainActivity_Student.class);
+                    Intent i = new Intent(SplashScreen.this, PasscodeActivity.class);
                     startActivity(i);
-                }
-                else {
-                    Intent i = new Intent(SplashScreen.this, MainActivity_Prof.class);
-                    startActivity(i);
-
                 }
                 finish();
 
             }
-        },1200);
+        },2000);
     }
 }

@@ -117,6 +117,7 @@ public class MainActivity_Prof extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 SplashScreen.edit.putString("login_status","false");
+                SplashScreen.edit.putString("passcode",null);
                 SplashScreen.edit.commit();
                 startActivity(new Intent(MainActivity_Prof.this,LoginActivity.class));
                 finish();
